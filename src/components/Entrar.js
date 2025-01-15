@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const Entrar = () => {
     const [email, setEmail] = useState('');
@@ -7,7 +9,12 @@ const Entrar = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        setMessage('Inicio de sesión exitoso (simulación).');
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            setMessage('Inicio de sesión exitoso.');
+        } catch (error) {
+            setMessage(error.message || 'Error al iniciar sesión.');
+        }
     };
 
     return (

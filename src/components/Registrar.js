@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const Registrar = () => {
     const [email, setEmail] = useState('');
@@ -7,7 +9,12 @@ const Registrar = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        setMessage('Registro exitoso (simulación).');
+        try {
+            await createUserWithEmailAndPassword(auth, email, password);
+            setMessage('Registro exitoso.');
+        } catch (error) {
+            setMessage(error.message || 'Error al registrar.');
+        }
     };
 
     return (
