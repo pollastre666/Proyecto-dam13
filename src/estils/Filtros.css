@@ -1,0 +1,24 @@
+.filtros {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.campo, .tipos {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    margin-right: 10px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #004d40;
+}

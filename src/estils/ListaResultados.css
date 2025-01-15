@@ -1,0 +1,15 @@
+.lista-resultados {
+    background-color: #eceff1;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px 0;
+}

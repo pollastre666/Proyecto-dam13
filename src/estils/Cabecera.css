@@ -1,0 +1,27 @@
+.cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #e0f7fa;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #00796b;
+}
+
+.auth button {
+    margin-left: 10px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
