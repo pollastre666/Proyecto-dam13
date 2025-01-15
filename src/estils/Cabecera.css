@@ -6,6 +6,17 @@
     background-color: #e0f7fa;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+.logo {
+    width: 150px; 
+    height: auto;
+}
+
 nav ul {
     display: flex;
     list-style: none;
