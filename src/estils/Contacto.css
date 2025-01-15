@@ -1,57 +1,52 @@
 .contacto {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 50px auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #333;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.contacto h1, .contacto h2 {
-    text-align: center;
+.contacto h1 {
+    font-size: 2.5rem;
     color: #00796b;
     margin-bottom: 20px;
 }
 
-.info-contacto {
-    text-align: center;
+.contacto p {
+    font-size: 1.2rem;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.info-contacto p {
-    font-size: 1.2rem;
-}
-
-.formulario-contacto {
+.contacto form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
 }
 
-.formulario-contacto div {
-    display: flex;
-    flex-direction: column;
-}
-
-input, textarea {
+.contacto input, .contacto textarea {
+    width: 100%;
+    max-width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
 }
 
-button {
-    align-self: center;
+.contacto button {
     background-color: #00796b;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
+.contacto button:hover {
     background-color: #004d40;
 }

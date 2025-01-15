@@ -5,6 +5,8 @@ import Filtros from './components/Filtros';
 import ListaResultados from './components/ListaResultados';
 import QuienesSomos from './components/QuienesSomos';
 import Contacto from './components/Contacto';
+import Registrar from './components/Registrar';
+import Entrar from './components/Entrar';
 import './estils/App.css';
 
 const App = () => {
@@ -15,14 +17,19 @@ const App = () => {
             <div className="App">
                 <Cabecera />
                 <Routes>
-                    <Route path="/" element={
-                        <main>
-                            <Filtros />
-                            <ListaResultados resultados={resultados} />
-                        </main>
-                    } />
+                    <Route
+                        path="/"
+                        element={
+                            <main>
+                                <Filtros />
+                                <ListaResultados resultados={resultados} />
+                            </main>
+                        }
+                    />
                     <Route path="/quienes-somos" element={<QuienesSomos />} />
                     <Route path="/contacto" element={<Contacto />} />
+                    <Route path="/registrar" element={<Registrar />} />
+                    <Route path="/entrar" element={<Entrar />} />
                 </Routes>
             </div>
         </Router>

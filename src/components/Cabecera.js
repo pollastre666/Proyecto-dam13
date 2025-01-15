@@ -18,8 +18,12 @@ const Cabecera = () => {
                 </ul>
             </nav>
             <div className="auth">
-                <button>Registrarse</button>
-                <button>Entrar</button>
+                <Link to="/registrar">
+                    <button>Registrarse</button>
+                </Link>
+                <Link to="/entrar">
+                    <button>Entrar</button>
+                </Link>
             </div>
         </header>
     );
