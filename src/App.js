@@ -8,6 +8,7 @@ import Contacto from './components/Contacto';
 import Registrar from './components/Registrar';
 import Entrar from './components/Entrar';
 import './estils/App.css';
+import CompararCPUs from './components/CompararCPUs';
 
 const App = () => {
     const [resultados, setResultados] = useState([]);
@@ -30,6 +31,7 @@ const App = () => {
                     <Route path="/contacto" element={<Contacto />} />
                     <Route path="/registrar" element={<Registrar />} />
                     <Route path="/entrar" element={<Entrar />} />
+                    <Route path="/comparar" element={<CompararCPUs />} /> 
                 </Routes>
             </div>
         </Router>
