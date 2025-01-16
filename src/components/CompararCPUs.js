@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import '../estils/CompararCPUs.css'; // Importa el archivo CSS
+import '../estils/CompararCPUs.css';
 
 const CompararCPUs = () => {
     const location = useLocation();
