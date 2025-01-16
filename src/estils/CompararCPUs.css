@@ -1,28 +1,30 @@
 .comparar-cpus {
-    max-width: 800px;
     margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    background-color: #222; /* Fondo negro simple */
+    color: white; /* Texto blanco */
+    text-align: left; /* Texto alineado a la izquierda */
 }
 
 table {
     width: 100%;
+    border: 1px solid white; /* Bordes blancos simples */
+    margin-top: 10px;
     border-collapse: collapse;
 }
 
 th, td {
-    padding: 10px;
+    padding: 5px; /* Espaciado mínimo */
+    border: 1px solid white; /* Bordes blancos simples */
     text-align: center;
-    border: 1px solid #ddd;
 }
 
 th {
-    background-color: #00796b;
-    color: white;
+    background-color: #444; /* Gris oscuro */
+    color: white; /* Texto blanco */
 }
 
 td {
-    background-color: #f1f1f1;
+    background-color: #333; /* Gris medio */
+    color: white; /* Texto blanco */
 }
