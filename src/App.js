@@ -8,7 +8,6 @@ import Contacto from './components/Contacto';
 import Registrar from './components/Registrar';
 import Entrar from './components/Entrar';
 import CompararCPUs from './components/CompararCPUs';
-import Perfil from './components/Perfil'; 
 import getCPUs from './cpuDataService';
 import './estils/App.css';
 
@@ -20,7 +19,7 @@ const App = () => {
     useEffect(() => {
         const fetchCPUs = async () => {
             try {
-                const cpus = await getCPUs(); 
+                const cpus = await getCPUs();
                 setResultados(cpus);
                 setFiltrados(cpus); 
             } catch (error) {
@@ -57,6 +56,18 @@ const App = () => {
         }
     };
 
+    const filtrarPorNombre = (nombre) => {
+        const nombreLower = nombre.toLowerCase();
+        if (!nombreLower) {
+            setFiltrados(resultados);
+        } else {
+            const cpusFiltradas = resultados.filter((cpu) =>
+                cpu.CPU_Name.toLowerCase().includes(nombreLower)
+            );
+            setFiltrados(cpusFiltradas);
+        }
+    };
+
     return (
         <Router>
             <div className="App">
@@ -69,7 +80,22 @@ const App = () => {
                                 <Filtros
                                     onFiltrarPorPresupuesto={filtrarPorPresupuesto}
                                     onFiltrarPorPuntuacion={filtrarPorPuntuacion}
+                                    onFiltrarPorNombre={filtrarPorNombre}
                                 />
+                                <button
+                                    onClick={() => setFiltrados(resultados)} 
+                                    style={{
+                                        padding: '10px',
+                                        marginTop: '10px',
+                                        backgroundColor: '#00796b',
+                                        color: 'white',
+                                        border: 'none',
+                                        borderRadius: '5px',
+                                        cursor: 'pointer',
+                                    }}
+                                >
+                                    Restablecer Filtros
+                                </button>
                                 {cargando ? (
                                     <p>Cargando CPUs...</p>
                                 ) : (
@@ -83,7 +109,6 @@ const App = () => {
                     <Route path="/registrar" element={<Registrar />} />
                     <Route path="/entrar" element={<Entrar />} />
                     <Route path="/comparar" element={<CompararCPUs />} />
-                    <Route path="/perfil" element={<Perfil />} /> {/* Nueva ruta para el perfil */}
                 </Routes>
             </div>
         </Router>

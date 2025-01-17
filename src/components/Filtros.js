@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-const Filtros = ({ onFiltrarPorPresupuesto, onFiltrarPorPuntuacion }) => {
+const Filtros = ({ onFiltrarPorPresupuesto, onFiltrarPorPuntuacion, onFiltrarPorNombre }) => {
     const [presupuesto, setPresupuesto] = useState('');
     const [puntuacion, setPuntuacion] = useState('');
+    const [nombre, setNombre] = useState('');
 
     const handlePresupuestoChange = (e) => {
         const value = e.target.value;
@@ -16,34 +17,54 @@ const Filtros = ({ onFiltrarPorPresupuesto, onFiltrarPorPuntuacion }) => {
         onFiltrarPorPuntuacion(value);
     };
 
+    const handleNombreChange = (e) => {
+        const value = e.target.value;
+        setNombre(value);
+        onFiltrarPorNombre(value);
+    };
+
     return (
         <div style={{ textAlign: 'center', marginBottom: '20px' }}>
             <h2>Filtrar CPUs</h2>
-            <input
-                type="number"
-                placeholder="Introduce tu presupuesto máximo"
-                value={presupuesto}
-                onChange={handlePresupuestoChange}
-                style={{
-                    padding: '5px',
-                    fontSize: '16px',
-                    margin: '10px 0',
-                    width: '200px',
-                }}
-            />
-            <br />
-            <input
-                type="number"
-                placeholder="Introduce la puntuación mínima"
-                value={puntuacion}
-                onChange={handlePuntuacionChange}
-                style={{
-                    padding: '5px',
-                    fontSize: '16px',
-                    margin: '10px 0',
-                    width: '200px',
-                }}
-            />
+            <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>Introduce tu presupuesto máximo:</label>
+                <input
+                    type="number"
+                    value={presupuesto}
+                    onChange={handlePresupuestoChange}
+                    style={{
+                        padding: '5px',
+                        fontSize: '16px',
+                        width: '200px',
+                    }}
+                />
+            </div>
+            <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>Introduce la puntuación mínima:</label>
+                <input
+                    type="number"
+                    value={puntuacion}
+                    onChange={handlePuntuacionChange}
+                    style={{
+                        padding: '5px',
+                        fontSize: '16px',
+                        width: '200px',
+                    }}
+                />
+            </div>
+            <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>Buscar por nombre:</label>
+                <input
+                    type="text"
+                    value={nombre}
+                    onChange={handleNombreChange}
+                    style={{
+                        padding: '5px',
+                        fontSize: '16px',
+                        width: '200px',
+                    }}
+                />
+            </div>
         </div>
     );
 };

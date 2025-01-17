@@ -8,7 +8,7 @@ const Cabecera = () => {
         <header className="cabecera">
             <div className="logo-container">
                 <img src={logo} alt="CPU Finder Logo" className="logo" />
-                <h1>CPU Finder</h1>
+                <h1 style={{ color: 'white' }}>CPU Finder</h1>
             </div>
             <nav>
                 <ul>
