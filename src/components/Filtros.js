@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
+import '../estils/Filtros.css';
 
-const Filtros = ({ onFiltrar, onFiltrarIntel, onFiltrarRyzen }) => {
+const Filtros = ({ onFiltrarPorPresupuesto }) => {
     const [presupuesto, setPresupuesto] = useState('');
 
-    const handleInputChange = (e) => {
+    const handlePresupuestoChange = (e) => {
         const value = e.target.value;
         setPresupuesto(value);
-        onFiltrar(value);
+        onFiltrarPorPresupuesto(value);
     };
 
     return (
         <div style={{ textAlign: 'center', marginBottom: '20px' }}>
             <h2>Filtrar CPUs</h2>
             <input
-                type="number"
-                placeholder="Introduce tu presupuesto"
+                type="number"s
+                placeholder="Introduce tu presupuesto máximo"
                 value={presupuesto}
-                onChange={handleInputChange}
+                onChange={handlePresupuestoChange}
                 style={{
                     padding: '5px',
                     fontSize: '16px',
@@ -24,14 +25,6 @@ const Filtros = ({ onFiltrar, onFiltrarIntel, onFiltrarRyzen }) => {
                     width: '200px',
                 }}
             />
-            <div>
-                <button onClick={onFiltrarIntel} style={{ padding: '10px 20px', margin: '5px', backgroundColor: '#00796b', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                    Mostrar Intel
-                </button>
-                <button onClick={onFiltrarRyzen} style={{ padding: '10px 20px', margin: '5px', backgroundColor: '#d32f2f', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                    Mostrar Ryzen
-                </button>
-            </div>
         </div>
     );
 };

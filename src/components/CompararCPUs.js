@@ -4,39 +4,35 @@ import '../estils/CompararCPUs.css';
 
 const CompararCPUs = () => {
     const location = useLocation();
-    const { cpusSeleccionadas } = location.state || { cpusSeleccionadas: [] };
+    const seleccionadas = location.state?.seleccionadas || []; // Valor predeterminado como un array vacío.
 
-    if (cpusSeleccionadas.length !== 2) {
-        return <p>Error: Selecciona exactamente 2 CPUs para comparar.</p>;
+    if (seleccionadas.length !== 2) {
+        return <p>Selecciona exactamente 2 CPUs para comparar.</p>;
     }
 
     return (
-        <div className="comparar-cpus">
+        <div>
             <h1>Comparación de CPUs</h1>
-            <table>
+            <table border="1" style={{ margin: '20px auto', width: '80%', textAlign: 'center' }}>
                 <thead>
                     <tr>
                         <th>Propiedad</th>
-                        <th>{cpusSeleccionadas[0].nombre}</th>
-                        <th>{cpusSeleccionadas[1].nombre}</th>
+                        <th>{seleccionadas[0].CPU_Name}</th>
+                        <th>{seleccionadas[1].CPU_Name}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Precio</td>
-                        <td>{cpusSeleccionadas[0].precio}</td>
-                        <td>{cpusSeleccionadas[1].precio}</td>
-                    </tr>
-                    <tr>
                         <td>Puntuación</td>
-                        <td>{cpusSeleccionadas[0].puntuacion}</td>
-                        <td>{cpusSeleccionadas[1].puntuacion}</td>
+                        <td>{seleccionadas[0].CPU_Mark}</td>
+                        <td>{seleccionadas[1].CPU_Mark}</td>
                     </tr>
                     <tr>
-                        <td>Frecuencia</td>
-                        <td>{cpusSeleccionadas[0].frecuencia}</td>
-                        <td>{cpusSeleccionadas[1].frecuencia}</td>
+                        <td>Relación Calidad-Precio</td>
+                        <td>{seleccionadas[0].CPU_Value !== 'NA' ? `$${seleccionadas[0].CPU_Value}` : 'No disponible'}</td>
+                        <td>{seleccionadas[1].CPU_Value !== 'NA' ? `$${seleccionadas[1].CPU_Value}` : 'No disponible'}</td>
                     </tr>
+                    {/* Agrega más filas según las propiedades que quieras comparar */}
                 </tbody>
             </table>
         </div>

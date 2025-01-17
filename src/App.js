@@ -13,22 +13,36 @@ import './estils/App.css';
 
 const App = () => {
     const [resultados, setResultados] = useState([]);
+    const [filtrados, setFiltrados] = useState([]);
     const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchCPUs = async () => {
             try {
-                const cpus = await getCPUs();
-                setResultados(cpus); // Actualiza el estado con los datos obtenidos.
+                const cpus = await getCPUs(); // Cargar CPUs desde la API.
+                setResultados(cpus);
+                setFiltrados(cpus); // Inicialmente, los filtrados son iguales a los resultados.
             } catch (error) {
-                console.error('Error al cargar las CPUs:', error);
+                console.error('Error al cargar CPUs:', error);
             } finally {
-                setCargando(false); // Detiene la carga después de completar la solicitud.
+                setCargando(false);
             }
         };
 
-        fetchData();
+        fetchCPUs();
     }, []);
+
+    const filtrarPorPresupuesto = (presupuestoMax) => {
+        const presupuestoNum = parseInt(presupuestoMax, 10); 
+        if (isNaN(presupuestoNum)) {
+            setFiltrados(resultados); 
+        } else {
+            const cpusFiltradas = resultados.filter(
+                (cpu) => cpu.CPU_Value !== 'NA' && parseFloat(cpu.CPU_Value) <= presupuestoNum
+            );
+            setFiltrados(cpusFiltradas);
+        }
+    };
 
     return (
         <Router>
@@ -39,10 +53,11 @@ const App = () => {
                         path="/"
                         element={
                             <main>
+                                <Filtros onFiltrarPorPresupuesto={filtrarPorPresupuesto} />
                                 {cargando ? (
                                     <p>Cargando CPUs...</p>
                                 ) : (
-                                    <ListaResultados resultados={resultados} />
+                                    <ListaResultados resultados={filtrados} />
                                 )}
                             </main>
                         }
