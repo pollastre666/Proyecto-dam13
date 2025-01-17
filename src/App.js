@@ -44,6 +44,18 @@ const App = () => {
         }
     };
 
+    const filtrarPorPuntuacion = (puntuacionMin) => {
+        const puntuacionNum = parseInt(puntuacionMin, 10); 
+        if (isNaN(puntuacionNum)) {
+            setFiltrados(resultados); 
+        } else {
+            const cpusFiltradas = resultados.filter(
+                (cpu) => parseInt(cpu.CPU_Mark, 10) >= puntuacionNum
+            );
+            setFiltrados(cpusFiltradas);
+        }
+    };
+
     return (
         <Router>
             <div className="App">
@@ -53,7 +65,10 @@ const App = () => {
                         path="/"
                         element={
                             <main>
-                                <Filtros onFiltrarPorPresupuesto={filtrarPorPresupuesto} />
+                                <Filtros
+                                    onFiltrarPorPresupuesto={filtrarPorPresupuesto}
+                                    onFiltrarPorPuntuacion={filtrarPorPuntuacion}
+                                />
                                 {cargando ? (
                                     <p>Cargando CPUs...</p>
                                 ) : (
