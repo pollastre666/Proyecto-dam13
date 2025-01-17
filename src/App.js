@@ -8,6 +8,7 @@ import Contacto from './components/Contacto';
 import Registrar from './components/Registrar';
 import Entrar from './components/Entrar';
 import CompararCPUs from './components/CompararCPUs';
+import Perfil from './components/Perfil'; 
 import getCPUs from './cpuDataService';
 import './estils/App.css';
 
@@ -19,9 +20,9 @@ const App = () => {
     useEffect(() => {
         const fetchCPUs = async () => {
             try {
-                const cpus = await getCPUs(); // Cargar CPUs desde la API.
+                const cpus = await getCPUs(); 
                 setResultados(cpus);
-                setFiltrados(cpus); // Inicialmente, los filtrados son iguales a los resultados.
+                setFiltrados(cpus); 
             } catch (error) {
                 console.error('Error al cargar CPUs:', error);
             } finally {
@@ -33,9 +34,9 @@ const App = () => {
     }, []);
 
     const filtrarPorPresupuesto = (presupuestoMax) => {
-        const presupuestoNum = parseInt(presupuestoMax, 10); 
+        const presupuestoNum = parseInt(presupuestoMax, 10);
         if (isNaN(presupuestoNum)) {
-            setFiltrados(resultados); 
+            setFiltrados(resultados);
         } else {
             const cpusFiltradas = resultados.filter(
                 (cpu) => cpu.CPU_Value !== 'NA' && parseFloat(cpu.CPU_Value) <= presupuestoNum
@@ -45,9 +46,9 @@ const App = () => {
     };
 
     const filtrarPorPuntuacion = (puntuacionMin) => {
-        const puntuacionNum = parseInt(puntuacionMin, 10); 
+        const puntuacionNum = parseInt(puntuacionMin, 10);
         if (isNaN(puntuacionNum)) {
-            setFiltrados(resultados); 
+            setFiltrados(resultados);
         } else {
             const cpusFiltradas = resultados.filter(
                 (cpu) => parseInt(cpu.CPU_Mark, 10) >= puntuacionNum
@@ -82,6 +83,7 @@ const App = () => {
                     <Route path="/registrar" element={<Registrar />} />
                     <Route path="/entrar" element={<Entrar />} />
                     <Route path="/comparar" element={<CompararCPUs />} />
+                    <Route path="/perfil" element={<Perfil />} /> {/* Nueva ruta para el perfil */}
                 </Routes>
             </div>
         </Router>

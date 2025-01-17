@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -6,12 +7,14 @@ const Entrar = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
             setMessage('Inicio de sesión exitoso.');
+            navigate('/perfil'); 
         } catch (error) {
             setMessage(error.message || 'Error al iniciar sesión.');
         }
@@ -19,7 +22,7 @@ const Entrar = () => {
 
     return (
         <div style={{ textAlign: 'center', marginTop: '50px', color: 'white' }}>
-            <h1>Iniciar sesión</h1>
+            <h1 style={{ color: 'white' }}>Iniciar sesión</h1>
             <form onSubmit={handleLogin}>
                 <div>
                     <label>Email:</label>

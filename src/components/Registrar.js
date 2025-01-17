@@ -19,7 +19,7 @@ const Registrar = () => {
 
     return (
         <div style={{ textAlign: 'center', marginTop: '50px', color: 'white' }}>
-            <h1>Registrarse</h1>
+            <h1 style={{ color: 'white' }}>Registrarse</h1>
             <form onSubmit={handleRegister}>
                 <div>
                     <label>Email:</label>
