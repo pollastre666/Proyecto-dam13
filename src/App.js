@@ -72,7 +72,7 @@ const App = () => {
     return (
         <Router>
             <div className="App">
-                <Cabecera usuario={usuario} /> {/* Pasamos el usuario como prop */}
+                <Cabecera usuario={usuario} /> 
                 <Routes>
                     <Route
                         path="/"
@@ -88,7 +88,7 @@ const App = () => {
                                     style={{
                                         padding: '10px',
                                         marginTop: '10px',
-                                        backgroundColor: '#00796b',
+                                        backgroundColor: '#0056b3',
                                         color: 'white',
                                         border: 'none',
                                         borderRadius: '5px',
