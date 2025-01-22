@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 
 const ListaResultados = ({ resultados }) => {
     const [seleccionadas, setSeleccionadas] = useState([]);
+    const navigate = useNavigate(); 
 
     const handleSeleccionar = (cpu) => {
         if (seleccionadas.length < 2) {
@@ -13,6 +15,15 @@ const ListaResultados = ({ resultados }) => {
 
     const handleEliminarSeleccion = (cpu) => {
         setSeleccionadas(seleccionadas.filter((item) => item.CPU_Name !== cpu.CPU_Name));
+    };
+
+    const handleComparar = () => {
+        if (seleccionadas.length === 2) {
+            console.log('Navegando a comparar con:', seleccionadas); 
+            navigate('/comparar', { state: { seleccionadas } }); 
+        } else {
+            alert('Selecciona exactamente 2 CPUs para comparar.');
+        }
     };
 
     return (
@@ -45,7 +56,6 @@ const ListaResultados = ({ resultados }) => {
             ) : (
                 <p>No se encontraron CPUs.</p>
             )}
-            {/* Seleccionadas */}
             {seleccionadas.length > 0 && (
                 <div style={{ marginTop: '20px' }}>
                     <h3>CPUs Seleccionadas:</h3>
@@ -70,6 +80,22 @@ const ListaResultados = ({ resultados }) => {
                             </li>
                         ))}
                     </ul>
+                    {seleccionadas.length === 2 && (
+                        <button
+                            onClick={handleComparar}
+                            style={{
+                                padding: '10px',
+                                marginTop: '10px',
+                                backgroundColor: '#00796b',
+                                color: 'white',
+                                border: 'none',
+                                borderRadius: '5px',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            Comparar
+                        </button>
+                    )}
                 </div>
             )}
         </div>
