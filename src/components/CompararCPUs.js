@@ -4,7 +4,7 @@ import '../estils/CompararCPUs.css';
 
 const CompararCPUs = () => {
     const location = useLocation();
-    const seleccionadas = location.state?.seleccionadas || []; // Valor predeterminado como un array vacío.
+    const seleccionadas = location.state?.seleccionadas || []; 
 
     if (seleccionadas.length !== 2) {
         return <p>Selecciona exactamente 2 CPUs para comparar.</p>;
@@ -32,7 +32,6 @@ const CompararCPUs = () => {
                         <td>{seleccionadas[0].CPU_Value !== 'NA' ? `$${seleccionadas[0].CPU_Value}` : 'No disponible'}</td>
                         <td>{seleccionadas[1].CPU_Value !== 'NA' ? `$${seleccionadas[1].CPU_Value}` : 'No disponible'}</td>
                     </tr>
-                    {/* Agrega más filas según las propiedades que quieras comparar */}
                 </tbody>
             </table>
         </div>

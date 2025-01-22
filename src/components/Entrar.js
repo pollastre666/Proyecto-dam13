@@ -14,9 +14,9 @@ const Entrar = ({ setUsuario }) => {
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            setUsuario(user); // Guardamos los datos del usuario
+            setUsuario(user); 
             setMessage('Inicio de sesión exitoso.');
-            navigate('/'); // Redirigimos al inicio
+            navigate('/'); 
         } catch (error) {
             setMessage(error.message || 'Error al iniciar sesión.');
         }

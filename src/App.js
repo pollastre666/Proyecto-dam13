@@ -15,7 +15,7 @@ const App = () => {
     const [resultados, setResultados] = useState([]);
     const [filtrados, setFiltrados] = useState([]);
     const [cargando, setCargando] = useState(true);
-    const [usuario, setUsuario] = useState(null); // Estado para el usuario autenticado
+    const [usuario, setUsuario] = useState(null); 
 
     useEffect(() => {
         const fetchCPUs = async () => {

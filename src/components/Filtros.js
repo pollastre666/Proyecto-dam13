@@ -26,7 +26,7 @@ const Filtros = ({ onFiltrarPorPresupuesto, onFiltrarPorPuntuacion, onFiltrarPor
     return (
         <div style={{ textAlign: 'center', marginBottom: '20px' }}>
             <h2>Filtrar CPUs</h2>
-            <div style={{ marginBottom: '15px' }}>
+            <div style={{ marginBottom: '20px' }}>
                 <label style={{ display: 'block', marginBottom: '5px' }}>Introduce tu presupuesto máximo:</label>
                 <input
                     type="number"
@@ -39,7 +39,7 @@ const Filtros = ({ onFiltrarPorPresupuesto, onFiltrarPorPuntuacion, onFiltrarPor
                     }}
                 />
             </div>
-            <div style={{ marginBottom: '15px' }}>
+            <div style={{ marginBottom: '20px' }}>
                 <label style={{ display: 'block', marginBottom: '5px' }}>Introduce la puntuación mínima:</label>
                 <input
                     type="number"
@@ -52,7 +52,7 @@ const Filtros = ({ onFiltrarPorPresupuesto, onFiltrarPorPuntuacion, onFiltrarPor
                     }}
                 />
             </div>
-            <div style={{ marginBottom: '15px' }}>
+            <div style={{ marginBottom: '20px' }}>
                 <label style={{ display: 'block', marginBottom: '5px' }}>Buscar por nombre:</label>
                 <input
                     type="text"
