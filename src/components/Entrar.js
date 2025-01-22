@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 
-const Entrar = () => {
+const Entrar = ({ setUsuario }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -12,9 +12,11 @@ const Entrar = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            setUsuario(user); // Guardamos los datos del usuario
             setMessage('Inicio de sesión exitoso.');
-            navigate('/perfil'); 
+            navigate('/'); // Redirigimos al inicio
         } catch (error) {
             setMessage(error.message || 'Error al iniciar sesión.');
         }

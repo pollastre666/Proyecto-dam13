@@ -15,13 +15,14 @@ const App = () => {
     const [resultados, setResultados] = useState([]);
     const [filtrados, setFiltrados] = useState([]);
     const [cargando, setCargando] = useState(true);
+    const [usuario, setUsuario] = useState(null); // Estado para el usuario autenticado
 
     useEffect(() => {
         const fetchCPUs = async () => {
             try {
                 const cpus = await getCPUs();
                 setResultados(cpus);
-                setFiltrados(cpus); 
+                setFiltrados(cpus);
             } catch (error) {
                 console.error('Error al cargar CPUs:', error);
             } finally {
@@ -71,7 +72,7 @@ const App = () => {
     return (
         <Router>
             <div className="App">
-                <Cabecera />
+                <Cabecera usuario={usuario} /> {/* Pasamos el usuario como prop */}
                 <Routes>
                     <Route
                         path="/"
@@ -83,7 +84,7 @@ const App = () => {
                                     onFiltrarPorNombre={filtrarPorNombre}
                                 />
                                 <button
-                                    onClick={() => setFiltrados(resultados)} 
+                                    onClick={() => setFiltrados(resultados)}
                                     style={{
                                         padding: '10px',
                                         marginTop: '10px',
@@ -106,8 +107,14 @@ const App = () => {
                     />
                     <Route path="/quienes-somos" element={<QuienesSomos />} />
                     <Route path="/contacto" element={<Contacto />} />
-                    <Route path="/registrar" element={<Registrar />} />
-                    <Route path="/entrar" element={<Entrar />} />
+                    <Route
+                        path="/registrar"
+                        element={<Registrar setUsuario={setUsuario} />} 
+                    />
+                    <Route
+                        path="/entrar"
+                        element={<Entrar setUsuario={setUsuario} />} 
+                    />
                     <Route path="/comparar" element={<CompararCPUs />} />
                 </Routes>
             </div>
