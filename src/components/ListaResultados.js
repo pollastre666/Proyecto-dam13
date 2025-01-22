@@ -1,87 +1,75 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../estils/ListaResultados.css';
 
-const ListaResultados = ({ resultados }) => {
-    const [seleccionadas, setSeleccionadas] = useState([]);
-    const navigate = useNavigate();
+const Filtros = ({ onFiltrarPorPresupuesto, onFiltrarPorPuntuacion, onFiltrarPorNombre }) => {
+    const [presupuesto, setPresupuesto] = useState('');
+    const [puntuacion, setPuntuacion] = useState('');
+    const [nombre, setNombre] = useState('');
 
-    const handleAñadir = (cpu) => {
-        if (seleccionadas.length < 2) {
-            if (!seleccionadas.find((item) => item.CPU_Name === cpu.CPU_Name)) {
-                setSeleccionadas([...seleccionadas, cpu]);
-            } else {
-                alert('Esta CPU ya está seleccionada.');
-            }
-        } else {
-            alert('Solo puedes seleccionar un máximo de 2 CPUs para comparar.');
-        }
+    const handlePresupuestoChange = (e) => {
+        const value = e.target.value;
+        setPresupuesto(value);
+        onFiltrarPorPresupuesto(value);
     };
 
-    const handleEliminar = (cpu) => {
-        setSeleccionadas(seleccionadas.filter((item) => item.CPU_Name !== cpu.CPU_Name));
+    const handlePuntuacionChange = (e) => {
+        const value = e.target.value;
+        setPuntuacion(value);
+        onFiltrarPorPuntuacion(value);
     };
 
-    const handleComparar = () => {
-        if (seleccionadas.length === 2) {
-            navigate('/comparar', { state: { seleccionadas } });
-        } else {
-            alert('Selecciona exactamente 2 CPUs para comparar.');
-        }
+    const handleNombreChange = (e) => {
+        const value = e.target.value;
+        setNombre(value);
+        onFiltrarPorNombre(value);
     };
 
     return (
-        <div className="lista-resultados">
-            <h2>Lista de CPUs:</h2>
-            {resultados.length > 0 ? (
-                <ul>
-                    {resultados.map((cpu, index) => (
-                        <li key={index}>
-                            <strong>{cpu.CPU_Name}</strong> - 
-                            {cpu.CPU_Mark} puntos - 
-                            {cpu.CPU_Value !== 'NA' ? `$${cpu.CPU_Value}` : 'Precio no disponible'}
-                            <button onClick={() => handleAñadir(cpu)}>Añadir</button>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No se encontraron CPUs disponibles.</p>
-            )}
-            <div style={{ marginTop: '20px' }}>
-                <h3>CPUs Seleccionadas:</h3>
-                {seleccionadas.length > 0 ? (
-                    <ul>
-                        {seleccionadas.map((cpu, index) => (
-                            <li key={index}>
-                                <strong>{cpu.CPU_Name}</strong> - 
-                                {cpu.CPU_Mark} puntos - 
-                                {cpu.CPU_Value !== 'NA' ? `$${cpu.CPU_Value}` : 'Precio no disponible'}
-                                <button onClick={() => handleEliminar(cpu)}>Eliminar</button>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No has seleccionado ninguna CPU.</p>
-                )}
-            </div>
-            {seleccionadas.length === 2 && (
-                <button
+        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+            <h2>Filtrar CPUs</h2>
+            <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>Introduce tu presupuesto máximo:</label>
+                <input
+                    type="number"
+                    placeholder="Ejemplo: 400"
+                    value={presupuesto}
+                    onChange={handlePresupuestoChange}
                     style={{
-                        marginTop: '20px',
-                        padding: '10px 20px',
-                        backgroundColor: '#00796b',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '5px',
-                        cursor: 'pointer',
+                        padding: '5px',
+                        fontSize: '16px',
+                        width: '200px',
                     }}
-                    onClick={handleComparar}
-                >
-                    Comparar
-                </button>
-            )}
+                />
+            </div>
+            <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>Introduce la puntuación mínima:</label>
+                <input
+                    type="number"
+                    placeholder="Ejemplo: 5000"
+                    value={puntuacion}
+                    onChange={handlePuntuacionChange}
+                    style={{
+                        padding: '5px',
+                        fontSize: '16px',
+                        width: '200px',
+                    }}
+                />
+            </div>
+            <div style={{ marginBottom: '15px' }}>
+                <label style={{ display: 'block', marginBottom: '5px' }}>Buscar por nombre:</label>
+                <input
+                    type="text"
+                    placeholder="Ejemplo: Ryzen"
+                    value={nombre}
+                    onChange={handleNombreChange}
+                    style={{
+                        padding: '5px',
+                        fontSize: '16px',
+                        width: '200px',
+                    }}
+                />
+            </div>
         </div>
     );
 };
 
-export default ListaResultados;
+export default Filtros;
