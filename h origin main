@@ -1,0 +1,21 @@
+[33m6b9817d[m[33m ([m[1;36mHEAD[m[33m)[m compararcpus arrglado
+[33m02bc9b5[m margen
+[33ma737069[m bt
+[33m250f4ab[m contador de cpus que se muestran
+[33me90d2cc[m textos en filtros.js
+[33m21425e1[m 15 registro rediri
+[33mdf16832[m 14- restablecer filtros
+[33m9f26e64[m millorant registro
+[33m91edb62[m 13- filtre per puntuacio de cpus
+[33mdd35a8a[m 12- filtre de busqueda per preosupost implementat :) i coses corretgides
+[33m039544e[m -11api implementada y da lista pero preosupost maxim comparar ryzen y intel no funciona
+[33m3a24fdf[m[33m ([m[1;32mlogo[m[33m)[m 10-filtros.js i filtrar en app.js
+[33m5cae8f0[m 9- dades simulades al appjs per veure si funciona la opcio i comparar millorat
+[33me514360[m 8-CompararCPUs y incluir ruta en app.js)
+[33m968d3fc[m 7-(listaresultados en css)
+[33md5b28a6[m 6- (listaresultados)
+[33m3b80714[m[33m ([m[1;31morigin/logo[m[33m)[m 5-(conectarfirebase con el rejistro)
+[33m1764a1a[m quart (background y registre)
+[33m8e686b5[m tercer, (registre migfet)
+[33m241aef7[m[33m ([m[1;33mtag: [m[1;33mlogo-i-tal[m[33m)[m segon
+[33mf81f476[m Primer commit
